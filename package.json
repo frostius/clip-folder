@@ -2,8 +2,8 @@
   "name": "clip-folder",
   "displayName": "Clip Folder",
   "description": "Copies contents of selected folder's files to clipboard with separators.",
-  "version": "0.0.1",
-  "publisher": "your-name",
+  "version": "0.0.3",
+  "publisher": "frostius",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "clipFolder.copyFiles",
-        "title": "Copy Folder Files to Clipboard"
+        "title": "Copy files to clipboard"
       }
     ],
     "menus": {
@@ -37,10 +37,8 @@
           "items": {
             "type": "string"
           },
-          "default": [
-            "**/*"
-          ],
-          "description": "Glob patterns for files to include (e.g., **/*.rs)"
+          "default": ["*"],
+          "description": "Glob patterns for files to include (e.g., *.rs)"
         },
         "clipFolder.excludeGlobs": {
           "type": "array",
@@ -48,13 +46,10 @@
             "type": "string"
           },
           "default": [],
-          "description": "Glob patterns for files to exclude (e.g., **/test.rs)"
+          "description": "Glob patterns for files to exclude (e.g, test.rs)"
         }
       }
     }
-  },
-  "dependencies": {
-    "glob": "^10.3.3"
   },
   "devDependencies": {
     "@vscode/test-electron": "^2.5.2"
