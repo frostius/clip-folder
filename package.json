@@ -1,0 +1,57 @@
+{
+  "name": "clip-folder",
+  "displayName": "Clip Folder",
+  "description": "Copies contents of selected folder's files to clipboard with separators.",
+  "version": "0.0.1",
+  "publisher": "your-name",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "clipFolder.copyFiles",
+        "title": "Copy Folder Files to Clipboard"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "clipFolder.copyFiles",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Clip Folder",
+      "properties": {
+        "clipFolder.includeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*"
+          ],
+          "description": "Glob patterns for files to include (e.g., **/*.rs)"
+        },
+        "clipFolder.excludeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Glob patterns for files to exclude (e.g., **/test.rs)"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "glob": "^10.3.3"
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
